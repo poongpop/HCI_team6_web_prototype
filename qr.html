@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시연용 QR 스티커</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .sheet { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; margin-top: 16px; }
+  .sticker { background: #fff; border: 2px solid var(--brand); border-radius: 16px; padding: 16px; text-align: center; break-inside: avoid; }
+  .sticker .t { font-weight: 800; color: var(--brand); font-size: 15px; margin-bottom: 10px; }
+  .sticker .q { width: 160px; height: 160px; margin: 0 auto; }
+  .sticker .q img, .sticker .q canvas { width: 160px !important; height: 160px !important; }
+  .sticker .car { font-size: 13px; color: var(--sub); margin-top: 10px; }
+  .sign { margin-top: 10px; border-top: 1px dashed var(--line); padding-top: 10px; font-size: 13px; }
+  .sign b { font-size: 16px; }
+  .sticker a { display: block; font-size: 12px; margin-top: 8px; word-break: break-all; color: var(--sub); }
+  .note { font-size: 13px; color: var(--sub); line-height: 1.6; }
+  @media print { .noprint { display: none; } body { background: #fff; } .wrap { max-width: none; } }
+</style>
+</head>
+<body>
+<main class="wrap" style="max-width:960px">
+  <div class="noprint">
+    <p class="lead">시연용 QR 스티커</p>
+    <p class="note">칸마다 QR코드(키 포함)와 칸 번호·확인코드 표시가 한 장씩 있어요. 실제 설치를 가정하면 확인코드 표시는 QR과 <b>다른 위치</b>에 붙입니다.<br>
+    QR 주소는 이 페이지가 열린 주소를 기준으로 만들어져요. GitHub Pages에 올린 뒤 이 페이지를 열어 인쇄하세요.</p>
+    <button class="btn primary" style="max-width:220px;margin-top:12px" onclick="print()">인쇄하기</button>
+  </div>
+  <div class="sheet" id="sheet"></div>
+</main>
+<script src="assets/app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  const base = location.href.replace(/qr\.html.*$/, '');
+  const sheet = document.getElementById('sheet');
+  Object.entries(CARS).forEach(([car, c]) => {
+    const url = base + qs(car);
+    const el = document.createElement('div');
+    el.className = 'sticker';
+    el.innerHTML = `<div class="t">불편할 땐 QR을 찍어주세요</div><div class="q"></div>
+      <div class="car">${c.line} ${car}호차 전용</div>
+      <div class="sign">칸 번호 <b>${car}</b> · 확인코드 <b>${c.code}</b></div>
+      <a class="noprint" href="${url}">${url}</a>`;
+    sheet.appendChild(el);
+    try { new QRCode(el.querySelector('.q'), { text: url, width: 320, height: 320, correctLevel: QRCode.CorrectLevel.M }); }
+    catch (e) { el.querySelector('.q').textContent = 'QR 생성 실패 (인터넷 연결 확인)'; }
+  });
+</script>
+</body>
+</html>
