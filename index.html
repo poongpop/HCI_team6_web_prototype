@@ -88,7 +88,7 @@
 
   if (verifyQr(car, key)) {
     document.getElementById('carText').textContent = `${CARS[car].line} ${car}호차`;
-    document.getElementById('tempLink').href = 'temperature/' + qs(car);
+    document.getElementById('tempLink').href = 'temperature/index.html' + qs(car);
     menuView.hidden = false;
   } else {
     blockView.hidden = false;
