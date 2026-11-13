@@ -56,25 +56,10 @@
     <p class="desc">민원은 열차에 탑승한 상태에서만 접수할 수 있어요.<br>각 칸의 출입문 옆에 붙은 QR코드를 휴대폰 카메라로 찍어 주세요.</p>
   </section>
 
-  <div class="card" id="manualCard">
+  <div class="card" id="smsCard">
     <b style="font-size:16px">QR코드가 찍히지 않나요?</b>
-    <p class="desc" style="margin-top:6px">QR코드가 훼손되었다면 칸 안에 표시된 <b>칸 번호</b>와 <b>확인코드</b>로 접수할 수 있어요.</p>
-    <div class="signex" aria-hidden="true"><span>칸 안 표시 예시</span><span><b>2045</b> 호차 · 확인코드 <b>7318</b></span></div>
-
-    <form id="manualForm" novalidate>
-      <div class="field">
-        <label for="carIn">칸 번호</label>
-        <input id="carIn" inputmode="numeric" autocomplete="off" maxlength="6" placeholder="예: 2045">
-        <div class="hint">4자리 또는 6자리 숫자 (신형 열차는 6자리)</div>
-      </div>
-      <div class="field">
-        <label for="codeIn">확인코드</label>
-        <input id="codeIn" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="4자리 숫자">
-        <div class="hint">칸 번호 표시 바로 옆에 적혀 있어요</div>
-      </div>
-      <div class="error" id="manualErr" role="alert"></div>
-      <button class="btn primary" type="submit">확인</button>
-    </form>
+    <p class="desc" style="margin-top:6px">QR코드가 훼손되었거나 인식되지 않으면 <b>문자</b>로 민원을 접수할 수 있어요.</p>
+    <button class="btn primary" id="smsBtn" type="button" style="margin-top:16px">문자로 접수하기</button>
   </div>
 
   <p class="footer">HCI 6조 프로토타입 · 실제 민원은 접수되지 않습니다</p>
@@ -98,25 +83,8 @@
     b.addEventListener('click', () => showToast(`'${b.dataset.soon}'은(는) 이 프로토타입에서 제공하지 않아요`));
   });
 
-  // 수동 입력: 칸 번호 + 확인코드
-  const carIn = document.getElementById('carIn');
-  const codeIn = document.getElementById('codeIn');
-  const err = document.getElementById('manualErr');
-  [carIn, codeIn].forEach(i => i.addEventListener('input', () => {
-    i.value = i.value.replace(/\D/g, '');
-    i.classList.remove('bad'); err.textContent = '';
-  }));
-  document.getElementById('manualForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const c = carIn.value, k = codeIn.value;
-    carIn.classList.remove('bad'); codeIn.classList.remove('bad');
-    if (!(c.length === 4 || c.length === 6)) { carIn.classList.add('bad'); err.textContent = '칸 번호는 4자리 또는 6자리 숫자예요.'; return; }
-    if (k.length !== 4) { codeIn.classList.add('bad'); err.textContent = '확인코드 4자리를 입력해 주세요.'; return; }
-    const r = verifyManual(c, k);
-    if (r === 'NO_CAR') { carIn.classList.add('bad'); err.textContent = `${c}호차를 찾을 수 없어요. 칸 번호를 다시 확인해 주세요.`; return; }
-    if (r === 'BAD_CODE') { codeIn.classList.add('bad'); err.textContent = '확인코드가 맞지 않아요. 칸 번호 옆의 4자리를 확인해 주세요.'; return; }
-    location.href = qs(c);
-  });
+  // QR이 작동하지 않을 때: 문자 접수로 안내 (프로토타입에서는 미구현)
+  document.getElementById('smsBtn').addEventListener('click', () => showToast('문자 접수는 이 프로토타입에서 제공하지 않아요'));
 </script>
 </body>
 </html>

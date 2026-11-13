@@ -23,7 +23,7 @@
 <main class="wrap" style="max-width:960px">
   <div class="noprint">
     <p class="lead">시연용 QR 스티커</p>
-    <p class="note">칸마다 QR코드(키 포함)와 칸 번호·확인코드 표시가 한 장씩 있어요. 실제 설치를 가정하면 확인코드 표시는 QR과 <b>다른 위치</b>에 붙입니다.<br>
+    <p class="note">칸마다 QR코드(키 포함)가 한 장씩 있어요.<br>
     QR 주소는 이 페이지가 열린 주소를 기준으로 만들어져요. GitHub Pages에 올린 뒤 이 페이지를 열어 인쇄하세요.</p>
     <button class="btn primary" style="max-width:220px;margin-top:12px" onclick="print()">인쇄하기</button>
   </div>
@@ -40,7 +40,6 @@
     el.className = 'sticker';
     el.innerHTML = `<div class="t">불편할 땐 QR을 찍어주세요</div><div class="q"></div>
       <div class="car">${c.line} ${car}호차 전용</div>
-      <div class="sign">칸 번호 <b>${car}</b> · 확인코드 <b>${c.code}</b></div>
       <a class="noprint" href="${url}">${url}</a>`;
     sheet.appendChild(el);
     try { new QRCode(el.querySelector('.q'), { text: url, width: 320, height: 320, correctLevel: QRCode.CorrectLevel.M }); }
