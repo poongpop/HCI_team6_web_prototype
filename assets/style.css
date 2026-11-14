@@ -83,6 +83,49 @@ body {
 .choice button:active { transform: scale(0.98); }
 .choice button.selected { border-color: currentColor; }
 
+/* 타고 있는 칸 그림 */
+.train { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px 14px 14px; margin-top: 12px; }
+.train-pin { position: relative; height: 44px; }
+.train-pin > * { position: absolute; left: calc((var(--p) - 0.5) / var(--n) * 100%); transform: translateX(-50%); }
+.train-pin span { top: 0; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.train-pin svg { top: 18px; }
+.train-cars { display: grid; grid-template-columns: repeat(var(--n), 1fr); gap: 3px; }
+.tc { background: #9aa3ad; color: #fff; font-weight: 800; font-size: 15px; text-align: center; padding: 8px 0; border-radius: 4px; }
+.tc.head { border-radius: 14px 4px 4px 14px; }
+.tc.me { background: #f07a2b; }
+.train-cap { margin: 10px 0 0; font-size: 14px; text-align: center; }
+.train-cap span { color: var(--sub); }
+
+/* 민원 선택지 */
+.opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.opts.one { grid-template-columns: 1fr; }
+.opt {
+  border: 1.5px solid var(--line); background: var(--card); border-radius: 12px; padding: 14px 12px;
+  font-size: 16px; font-family: inherit; color: var(--text); cursor: pointer; text-align: left;
+  display: flex; align-items: center; gap: 10px;
+}
+.opt::before { content: ""; width: 20px; height: 20px; border-radius: 6px; border: 2px solid #b7c0ca; flex: none; }
+.opt[aria-pressed="true"] { border-color: var(--brand); background: var(--brand-soft); font-weight: 700; }
+.opt[aria-pressed="true"]::before { background: var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/14px no-repeat; border-color: var(--brand); }
+.sub-label { font-size: 14px; font-weight: 700; margin: 22px 0 0; }
+textarea.memo {
+  width: 100%; margin-top: 10px; min-height: 92px; font-size: 15px; padding: 12px; border: 1.5px solid var(--line);
+  border-radius: 12px; font-family: inherit; resize: vertical; background: #fff; color: var(--text);
+}
+textarea.memo:focus { outline: none; border-color: var(--brand); }
+.count { text-align: right; font-size: 12px; color: var(--sub); margin-top: 4px; }
+.photos { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; align-items: center; }
+.photo-btn {
+  border: 1.5px solid var(--line); background: var(--card); border-radius: 12px; padding: 10px 14px;
+  font-size: 14px; font-weight: 600; font-family: inherit; color: var(--brand); cursor: pointer;
+}
+.photo-btn input { display: none; }
+.thumb { width: 56px; height: 56px; border-radius: 10px; object-fit: cover; border: 1px solid var(--line); }
+.warn { background: #fdecef; color: #a3213c; border-radius: 12px; padding: 12px 14px; font-size: 14px; line-height: 1.5; margin-top: 16px; }
+.warn b { font-size: 15px; }
+.submit-bar { margin-top: 24px; }
+.btn:disabled { background: #c3cad2; cursor: default; }
+
 /* 온도 표시 */
 .temps { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
 .temp { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }

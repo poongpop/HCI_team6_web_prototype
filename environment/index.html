@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>환경민원 (프로토타입)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<script src="../assets/app.js"></script>
+<script src="../assets/complaint.js"></script>
+<script>
+renderComplaint({
+  "title": "환경민원",
+  "options": [
+    "토사물",
+    "오물",
+    "객실환기요청",
+    "불법부착물"
+  ],
+  "cols": 1,
+  "photo": true,
+  "timeline": [
+    [
+      "민원 접수 완료",
+      ""
+    ],
+    [
+      "담당 직원에게 전달됨",
+      "청소·환경 담당 직원이 확인합니다"
+    ],
+    [
+      "조치 예정",
+      "다음 정차역 또는 종착역에서 처리될 수 있어요"
+    ]
+  ]
+});
+</script>
+</body>
+</html>

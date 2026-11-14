@@ -67,7 +67,7 @@
   const info = CARS[car] || { line: '' };
   const carLabel = `${info.line} ${car}호차`;
   const home = '../index.html' + (CARS[car] ? qs(car) : '');
-  document.getElementById('carText').textContent = carLabel;
+  document.getElementById('carText').textContent = info.pos ? `${carLabel} · ${info.pos}번째 칸` : carLabel;
   ['backLink', 'homeLink'].forEach(id => document.getElementById(id).href = home);
 
   const LABEL = { hot: '더워요 (난방 약하게)', cold: '추워요 (난방 강하게)' };

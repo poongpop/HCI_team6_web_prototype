@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>안내방송 (프로토타입)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<script src="../assets/app.js"></script>
+<script src="../assets/complaint.js"></script>
+<script>
+renderComplaint({
+  "title": "안내방송",
+  "options": [
+    "행선안내방송 안나옴",
+    "방송음량 크다",
+    "방송음량 작다"
+  ],
+  "cols": 1,
+  "photo": false,
+  "timeline": [
+    [
+      "민원 접수 완료",
+      ""
+    ],
+    [
+      "기관사에게 전달됨",
+      "해당 열차 기관사가 확인합니다"
+    ],
+    [
+      "방송 조치 검토 중",
+      "다음 역 안내방송부터 반영될 수 있어요"
+    ]
+  ]
+});
+</script>
+</body>
+</html>

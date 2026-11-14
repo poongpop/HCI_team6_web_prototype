@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>긴급상황 (프로토타입)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<script src="../assets/app.js"></script>
+<script src="../assets/complaint.js"></script>
+<script>
+renderComplaint({
+  "title": "긴급상황",
+  "options": [
+    "성추행",
+    "불법촬영",
+    "폭행",
+    "응급환자"
+  ],
+  "cols": 2,
+  "photo": true,
+  "roles": {
+    "label": "빠른 처리를 위해 선택해 주세요 (선택)",
+    "options": [
+      "피해자",
+      "제3자(목격자)"
+    ]
+  },
+  "memo": {
+    "label": "가해자 인상착의 (선택)",
+    "max": 100,
+    "placeholder": "복장, 키, 연령대, 몸집, 기타 특징 등을 간략하게 적어 주세요"
+  },
+  "warn": "<b>이 화면은 수업용 프로토타입이에요.</b><br>실제 긴급상황이라면 <b>112(경찰)</b> 또는 <b>119(응급)</b>로 바로 신고하세요.",
+  "timeline": [
+    [
+      "긴급 민원 접수 완료",
+      ""
+    ],
+    [
+      "관제센터에 전달됨",
+      "열차 위치와 칸 정보가 함께 전달됩니다"
+    ],
+    [
+      "보안관·역무원 출동 요청",
+      "다음 정차역에서 직원이 대기할 수 있어요"
+    ]
+  ]
+});
+</script>
+</body>
+</html>

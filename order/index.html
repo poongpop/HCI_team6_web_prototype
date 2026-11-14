@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>질서저해 (프로토타입)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<script src="../assets/app.js"></script>
+<script src="../assets/complaint.js"></script>
+<script>
+renderComplaint({
+  "title": "질서저해",
+  "options": [
+    "이동상인",
+    "취객",
+    "구걸",
+    "소란",
+    "노숙",
+    "전도(연설)",
+    "광고물 무단부착자"
+  ],
+  "cols": 2,
+  "photo": true,
+  "memo": {
+    "label": "인상착의 (선택)",
+    "max": 30,
+    "placeholder": "예: 30대 / 성별 / 신장 / 검은색 상의 / 흰색 하의"
+  },
+  "timeline": [
+    [
+      "민원 접수 완료",
+      ""
+    ],
+    [
+      "지하철 보안관에게 전달됨",
+      "가까운 보안관이 확인합니다"
+    ],
+    [
+      "현장 확인 예정",
+      "열차 운행 상황에 따라 도착 시간이 달라질 수 있어요"
+    ]
+  ]
+});
+</script>
+</body>
+</html>
